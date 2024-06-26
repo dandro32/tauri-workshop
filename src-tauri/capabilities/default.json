@@ -23,6 +23,7 @@
     "notification:allow-notify",
     "notification:allow-is-permission-granted",
     "notification:default",
-    "updater:default"
+    "updater:default",
+    "process:default"
   ]
 }
