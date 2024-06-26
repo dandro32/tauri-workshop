@@ -61,8 +61,8 @@ jobs:
 
       - name: build tauri app
         run: |
-          pnpm install
-          pnpm run tauri build
+          yarn install
+          yarn run tauri build
         env:
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
