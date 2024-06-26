@@ -4,6 +4,11 @@ import { invoke } from '@tauri-apps/api/core';
 import './App.css';
 import { ask } from '@tauri-apps/plugin-dialog';
 import { locale, platform } from '@tauri-apps/plugin-os';
+import {
+  isPermissionGranted,
+  requestPermission,
+  sendNotification,
+} from '@tauri-apps/plugin-notification';
 
 function App() {
   const [store, setStore] = useState({
@@ -36,8 +41,34 @@ function App() {
       setStore({ platform: platform2, locale: locale2 });
     };
 
+    const getNotifications = async () => {
+      const hasPermission = await isPermissionGranted();
+
+      if (!hasPermission) {
+        const permission = await requestPermission();
+
+        if (permission === 'granted') {
+          console.log('Permission granted');
+          sendNotification({
+            title: 'Hello from Rust!',
+            body: 'This is a notification from JavaScript and Rust',
+          });
+        } else {
+          console.log('Permission denied');
+        }
+      } else {
+        console.log('Already has permission');
+        console.log('sendNotification ');
+        sendNotification({
+          title: 'Hello from Rust!',
+          body: 'This is a notification from JavaScript and Rust',
+        });
+      }
+    };
+
     tryAsk();
     getPlatform();
+    getNotifications();
   }, []);
 
   return (
