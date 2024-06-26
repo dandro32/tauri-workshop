@@ -20,6 +20,14 @@
       "csp": null
     }
   },
+  "plugins": {
+    "updater": {
+      "endpoints": [
+        "https://cdn.crabnebula.app/update/dandro/dandro/{{target}}-{{arch}}/{{current_version}}"
+      ],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDc0NDEwOTg3NDE5NTMwODcKUldTSE1KVkJod2xCZEpiMGRXSmxiOWlLeG11OHpxemFHZFhtdDlFdldML3Biek5tT0p4ODc5a2UK"
+    }
+  },
   "bundle": {
     "active": true,
     "targets": "all",
