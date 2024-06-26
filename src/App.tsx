@@ -9,6 +9,7 @@ import {
   requestPermission,
   sendNotification,
 } from '@tauri-apps/plugin-notification';
+import { checkForAppUpdates } from './updater';
 
 function App() {
   const [store, setStore] = useState({
@@ -69,6 +70,7 @@ function App() {
     tryAsk();
     getPlatform();
     getNotifications();
+    checkForAppUpdates();
   }, []);
 
   return (
